@@ -122,7 +122,7 @@ exports.checkAccess = function (padID, sessionCookie, token, password, callback)
             return;
           }
           
-          var sessionIDs = sessionCookie.split(',');
+          var sessionIDs = sessionCookie.split(/%2C|,/);
           async.forEach(sessionIDs, function(sessionID, callback) {
             sessionManager.getSessionInfo(sessionID, function(err, sessionInfo) {
               //skip session if it doesn't exist
